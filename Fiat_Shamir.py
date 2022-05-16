@@ -6,8 +6,7 @@ def trusted_third_party():
     p = sp.randprime(2^10, 2^20)
     q = p = sp.randprime(2^10, 2^20)
     n = p*q
-    # return n
-    return 361
+    return n
 
 
 print("Trusted 3rd party generating n...")
@@ -19,17 +18,16 @@ def Alice():
     
     print("Alice generates her public & private key")
     s, v = Alice_key_gen(n)
-    # s, v = 272, 340
+    
     print(f"Alice's public key 'v': {v}")
     print(f"Alice's private key 's': {s}")
     
     r,x = Alice_witness()
-    # r,x = 318, 44
+    
     print(f"Alice generates random 'r': {r}")
     print(f"Alice sends witness 'x': {x} to Bob")
 
     y = Alice_transaction(r, s)
-    # y = 217
 
     print(f"Alice sends Bob 'y': {y}")
     Bob(1, [y, x, v])
